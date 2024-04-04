@@ -71,7 +71,7 @@ if __name__ == "__main__":
     input_file = os.path.join(os.getcwd(), 'folder_test', 'for_test.txt')
     encrypted_file = os.path.join(os.getcwd(), 'folder_test', 'encrypted_file_for_test.bin')
     decrypted_file = os.path.join(os.getcwd(), 'folder_test', 'decrypted_file_for_test.txt')
-    password = "700512"
+    password = "123456"
 
     # 加密文件
     encrypt_file(input_file, encrypted_file, password)

@@ -89,7 +89,7 @@ if __name__ == "__main__":
     input_file = os.path.join(os.getcwd(), 'folder_test', 'type_zip', 'random_compressed_file2.zip')
     encrypted_file = os.path.join(os.getcwd(), 'folder_test', 'type_zip', 'random_compressed_file2.zip.encrypted')
     decrypted_file = os.path.join(os.getcwd(), 'folder_test', 'type_zip', 'random_compressed_file2_decrypted.zip')
-    password = "700512"
+    password = "123456"
 
     # 加密文件
     encrypt_file(input_file, encrypted_file, password)

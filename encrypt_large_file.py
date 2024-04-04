@@ -5,6 +5,7 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
+
 def encrypt_file(input_file, output_file, password, chunk_size=65536):
     # 生成随机的盐值
     salt = os.urandom(16)
@@ -44,6 +45,7 @@ def encrypt_file(input_file, output_file, password, chunk_size=65536):
                 pbar.update(len(chunk))
 
             output_f.write(encryptor.finalize())
+
 
 def decrypt_file(input_file, output_file, password, chunk_size=65536):
     with open(input_file, 'rb') as input_f:

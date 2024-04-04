@@ -23,11 +23,11 @@ class TestEncryption(unittest.TestCase):
 
         self.password = "test_password"
 
-    # def tearDown(self):
-    #     # 在每个测试方法运行之后执行的清理
-    #     for file in self.encrypted_files + self.decrypted_files:
-    #         if os.path.exists(file):
-    #             os.remove(file)
+    def tearDown(self):
+        # 在每个测试方法运行之后执行的清理
+        for file in self.encrypted_files + self.decrypted_files:
+            if os.path.exists(file):
+                os.remove(file)
 
     def test_encryption_decryption(self):
         # 对每个输入文件进行加密和解密，并比较加密前和解密后的文件内容是否一致

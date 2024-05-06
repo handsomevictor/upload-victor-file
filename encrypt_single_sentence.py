@@ -35,6 +35,7 @@ def encrypt_sentence(sentence, password):
 
     return encrypted_sentence.decode('utf-8')
 
+
 def decrypt_sentence(encrypted_sentence, password):
     """
     Decrypts an encrypted sentence using the AES algorithm.

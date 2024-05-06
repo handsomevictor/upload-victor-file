@@ -1,5 +1,5 @@
+import argparse
 import base64
-
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
@@ -35,7 +35,6 @@ def encrypt_sentence(sentence, password):
 
     return encrypted_sentence.decode('utf-8')
 
-
 def decrypt_sentence(encrypted_sentence, password):
     """
     Decrypts an encrypted sentence using the AES algorithm.
@@ -68,14 +67,21 @@ def decrypt_sentence(encrypted_sentence, password):
 
 
 if __name__ == "__main__":
-    original_sentence = input("Enter a sentence to encrypt: ")
-    password = input("Enter a password for encryption: ")
-    print(f"Original sentence: {original_sentence}")
+    parser = argparse.ArgumentParser(description="Encrypt or decrypt a sentence using AES encryption.")
+    parser.add_argument("operation", choices=["encrypt", "decrypt"], help="Specify whether to encrypt or decrypt the sentence.")
+    parser.add_argument("sentence", help="The sentence to be encrypted or decrypted.")
+    parser.add_argument("-p", "--password", required=True, help="The password to use for encryption/decryption.")
 
-    # Encryption
-    encrypted_sentence = encrypt_sentence(original_sentence, password)
-    print(f"Encrypted sentence: {encrypted_sentence}")
+    args = parser.parse_args()
 
-    # Decryption
-    decrypted_sentence = decrypt_sentence(encrypted_sentence, password)
-    print(f"Decrypted sentence: {decrypted_sentence}")
+    if args.operation == "encrypt":
+        encrypted_sentence = encrypt_sentence(args.sentence, args.password)
+        print(f"Encrypted sentence: {encrypted_sentence}")
+    else:
+        decrypted_sentence = decrypt_sentence(args.sentence, args.password)
+        print(f"Decrypted sentence: {decrypted_sentence}")
+
+    # Example:
+    # python3 encrypt_single_sentence.py encrypt "This is a secret sentence." -p my_secure_password
+    # python script.py decrypt gAAAAA...V4kPgHlDK5ho= -p my_secure_password
+
